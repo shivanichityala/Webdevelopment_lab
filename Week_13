@@ -1,0 +1,15 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+function Weather() {
+  const [temp, setTemp] = useState("");
+
+  useEffect(() => {
+    axios.get("https://api.openweathermap.org/data/2.5/weather?q=Hyderabad&appid=YOUR_KEY")
+      .then(res => setTemp(res.data.main.temp));
+  }, []);
+
+  return <h2>Temperature: {temp}</h2>;
+}
+
+export default Weather;
